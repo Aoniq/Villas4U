@@ -1,0 +1,17 @@
+.card, .card-body {
+    background-color: #E7E5E4;
+    border-color: transparent;
+
+}
+
+header.header {
+    background-color: #F5F5F4;
+}
+
+footer.footer {
+    background-color: #F5F5F4;
+}
+
+.btn-outline-warning {
+    border-width: 4px;
+}
