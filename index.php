@@ -37,7 +37,7 @@
  
   </header>
   <main>
-    <div class="container mt-5">
+    <div class="container mt-5 pb-5 mb-5">
         <div class="row justify-content-center text-center items-center">
             <h1 class="fw-bolder">Villa te koop</h1>
             <h5>Where luxury needs exclusivity</h5>
@@ -48,7 +48,7 @@
                     <img src="./assets/img/villa1-banner.png" alt="" class="card-img-top">
                     <div class="card-body">
                         <ul class="list-unstyled">
-                            <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> 100m2 Achtertuin</li>
+                            <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> 100m² Achtertuin</li>
                             <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> 5 Slaapkamers</li>
                             <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> Binnen garage</li>
                         </ul>
@@ -61,7 +61,7 @@
                     <img src="./assets/img/villa2-banner.png" alt="" class="card-img-top">
                     <div class="card-body">
                         <ul class="list-unstyled">
-                            <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> 100m2 Achtertuin</li>
+                            <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> 100m² Achtertuin</li>
                             <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> 5 Slaapkamers</li>
                             <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> Binnen garage</li>
                         </ul>
@@ -74,7 +74,7 @@
                     <img src="./assets/img/villa3-banner.png" alt="" class="card-img-top">
                     <div class="card-body">
                         <ul class="list-unstyled">
-                            <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> 100m2 Achtertuin</li>
+                            <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> 100m² Achtertuin</li>
                             <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> 5 Slaapkamers</li>
                             <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> Binnen garage</li>
                         </ul>
@@ -87,7 +87,7 @@
                     <img src="./assets/img/villa4-banner.png" alt="" class="card-img-top">
                     <div class="card-body">
                         <ul class="list-unstyled">
-                            <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> 100m2 Achtertuin</li>
+                            <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> 100m² Achtertuin</li>
                             <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> 5 Slaapkamers</li>
                             <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> Binnen garage</li>
                         </ul>
@@ -100,7 +100,7 @@
                     <img src="./assets/img/villa5-banner.png" alt="" class="card-img-top">
                     <div class="card-body">
                         <ul class="list-unstyled">
-                            <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> 100m2 Achtertuin</li>
+                            <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> 100m² Achtertuin</li>
                             <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> 5 Slaapkamers</li>
                             <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> Binnen garage</li>
                         </ul>
@@ -113,7 +113,7 @@
                     <img src="./assets/img/villa6-banner.png" alt="" class="card-img-top">
                     <div class="card-body">
                         <ul class="list-unstyled">
-                            <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> 100m2 Achtertuin</li>
+                            <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> 100m² Achtertuin</li>
                             <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> 5 Slaapkamers</li>
                             <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> Binnen garage</li>
                         </ul>
@@ -141,11 +141,13 @@
       <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Blog</a></li>
       <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Resources</a></li>
     </ul>
-    <div class="row justify-content-between align-items-center w-100">
-        <div class="col-4"><i class="fa-brands fa-github"></i></div>
-        <div class="col-4"><i class="fa-brands fa-instagram"></i></div>
-        <div class="col-4"><i class="fa-brands fa-facebook"></i></div>
-    </div>
+    <div class="row justify-content-center align-items-center text-center gx-5 w-100">
+        <div class="col-1"><i class="fa-brands fa-github fs-1"></i></div>
+        <div class="col-1"><i class="fa-brands fa-instagram fs-1"></i></div>
+        <div class="col-1"><i class="fa-brands fa-facebook fs-1"></i></div>
+</div>
+    
+    
   </footer>
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"

@@ -15,3 +15,21 @@ footer.footer {
 .btn-outline-warning {
     border-width: 4px;
 }
+
+.carousel-item{
+    height:32rem;
+    background:#777;
+}
+
+p.thick {
+    font-weight: bold;
+  }
+.map{
+    height: 250px;
+    width: 250px;
+}
+
+.form-control {
+    background-color: #E7E5E4;
+    border: 0;
+}
