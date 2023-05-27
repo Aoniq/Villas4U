@@ -33,3 +33,7 @@ p.thick {
     background-color: #E7E5E4;
     border: 0;
 }
+
+img.carousel-item {
+    object-position: bottom center;
+}

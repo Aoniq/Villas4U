@@ -23,9 +23,9 @@
         <img src="./assets/img/logo.png" alt="" height = "110" class="">
         </a>
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="#" class="nav-link px-2 text-black fw-bold">Home</a></li>
-          <li><a href="#" class="nav-link px-2 text-black fw-bold">Villa's</a></li>
-          <li><a href="#" class="nav-link px-2 text-black fw-bold">Contact</a></li>
+          <li><a href="index.php" class="nav-link px-2 text-black fw-bold">Home</a></li>
+          <li><a href="villa's.php" class="nav-link px-2 text-black fw-bold">Villa's</a></li>
+          <li><a href="contact.php" class="nav-link px-2 text-black fw-bold">Contact</a></li>
         </ul>
 
         <div class="text-end">
