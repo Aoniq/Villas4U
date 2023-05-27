@@ -113,16 +113,13 @@
             <div class="col-md-6">
                  <!-- Informatie -->
                  <div class="pb-5">
-                 <h2>Mooi huis met vrij uitzicht en <br>
-            zwembad
-            </h2>
+                 <h2><?= $villaData['naam'] ?></h2>
                  </div>
             
             
             <div class="pb-5">
             <p class="fw-bold">Inleiding </p>
-            <p>
-Centrale entree met fraai trappenhuis, toilet en garderobe die aan de achterzijde van de woning via prachtige leren schuifdeuren toegang biedt tot de sfeervolle woonkamer met aangrenzende woonkeuken en tweede woonkamer (nu in gebruik als werkkamer). De keuken is uitgevoerd in wit met glazen panelen op de houten kasten. Het creëert een prachtige hoogglans-look. Vanzelfsprekend is alle inbouwapparatuur aanwezig. Sfeermaker is de prachtige roomdivider met doorkijk gashaard! Vanuit dezelfde centrale entree is aan de voorzijde van de woning een riante bijkeuken en grote werkkamer te bereiken.</p>
+            <p><?= $villaData['inleiding']?></p>
             </div>
             
               <p class="fw-bold">Locatie </p>
