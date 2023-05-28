@@ -17,9 +17,15 @@ footer.footer {
 }
 
 .carousel-item{
-    height:32rem;
+    max-height: 34rem;
     background:#777;
 }
+
+.carousel-inner img {
+    object-fit: cover;
+    height: 34rem;
+    width: 100%;
+  }
 
 p.thick {
     font-weight: bold;

@@ -19,7 +19,7 @@
   <header class="header">
     <div class="container-fluid">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+        <a href="./index.php" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
         <img src="./assets/img/logo.png" alt="" height = "110" class="">
         </a>
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
@@ -68,34 +68,34 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="./assets/img/huis2.jpeg" class="d-block img-fluid" alt="...">
+      <img src="./assets/img/huis2.jpeg" class="d-block img-fluid w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="./assets/img/huis3.jpeg" class="d-block img-fluid" alt="...">
+      <img src="./assets/img/huis3.jpeg" class="d-block img-fluid w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="./assets/img/huis10.jpeg" class="d-block img-fluid" alt="...">
+      <img src="./assets/img/huis10.jpeg" class="d-block img-fluid w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="./assets/img/huis7.jpeg" class="d-block img-fluid" alt="...">
+      <img src="./assets/img/huis7.jpeg" class="d-block img-fluid w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="./assets/img/huis6.jpeg" class="d-block img-fluid" alt="...">
+      <img src="./assets/img/huis6.jpeg" class="d-block img-fluid w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="./assets/img/huis8.jpeg" class="d-block img-fluid" alt="...">
+      <img src="./assets/img/huis8.jpeg" class="d-block img-fluid w-100" alt="...">
     </div>
      <div class="carousel-item">
-      <img src="./assets/img/huis4.jpeg" class="d-block img-fluid" alt="...">
+      <img src="./assets/img/huis4.jpeg" class="d-block img-fluid w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="./assets/img/huis1.jpeg" class="d-block img-fluid" alt="...">
+      <img src="./assets/img/huis1.jpeg" class="d-block img-fluid w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="./assets/img/huis5.jpeg" class="d-block img-fluid" alt="...">
+      <img src="./assets/img/huis5.jpeg" class="d-block img-fluid w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="./assets/img/huis9.jpeg" class="d-block img-fluid" alt="...">
+      <img src="./assets/img/huis9.jpeg" class="d-block img-fluid w-100" alt="...">
     </div>
    
   </div>

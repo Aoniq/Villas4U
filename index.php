@@ -19,7 +19,7 @@
   <header class="header">
     <div class="container-fluid">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+        <a href="javascript:void(0)" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
         <img src="./assets/img/logo.png" alt="" height = "110" class="">
         </a>
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
@@ -45,15 +45,16 @@
         <div class="row gy-5">
             <div class="col-md-4">
                 <div class="card p-0 shadow">
-                    <img src="./assets/img/villa1-banner.png" alt="" class="card-img-top">
+                    <img src="./assets/img/huis8.jpeg" alt="" class="card-img-top">
                     <div class="card-body">
                         <ul class="list-unstyled">
-                            <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> 100m² Achtertuin</li>
+                            <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> 4990m² Perceel</li>
+                            <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> 312m² Woonruimte</li>
                             <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> 5 Slaapkamers</li>
-                            <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> Binnen garage</li>
+                            <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> 3 Badkamers</li>
                         </ul>
                     </div>
-                    <a href="#" class="btn btn-warning w-100">Bekijk meer</a>
+                    <a href="./detail.php?villa=1" class="btn btn-warning w-100">Bekijk meer</a>
                 </div>
             </div>
             <div class="col-md-4">
