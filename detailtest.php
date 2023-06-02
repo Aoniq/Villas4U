@@ -44,13 +44,13 @@ if(isset($_GET['villa'])) {
         }
          
         // Controleer of er een bod is geplaatst via het formulier
-        if (isset($_POST['submit'])) {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Controleer of alle velden zijn ingevuld
-            if (!empty($_POST['achternaam']) && !empty($_POST['email']) && !empty($_POST['bod'])) {
+            if (!empty($_POST['naam']) && !empty($_POST['email']) && !empty($_POST['bedrag'])) {
                 // Ontvang de ingediende gegevens van het formulier
-                $naam = $_POST['achternaam'];
+                $naam = $_POST['naam'];
                 $email = $_POST['email'];
-                $bedrag = $_POST['bod'];
+                $bedrag = $_POST['bedrag'];
 
                 // Ontvang de villa ID uit de querystring
                 $villaId = $_GET['villa'];

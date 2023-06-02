@@ -42,36 +42,11 @@ if(isset($_GET['villa'])) {
         while($row = mysqli_fetch_assoc($biedingenResult)) {
             $biedingen[] = $row;
         }
-         
-        // Controleer of er een bod is geplaatst via het formulier
-        if (isset($_POST['submit'])) {
-            // Controleer of alle velden zijn ingevuld
-            if (!empty($_POST['achternaam']) && !empty($_POST['email']) && !empty($_POST['bod'])) {
-                // Ontvang de ingediende gegevens van het formulier
-                $naam = $_POST['achternaam'];
-                $email = $_POST['email'];
-                $bedrag = $_POST['bod'];
+         // hier
 
-                // Ontvang de villa ID uit de querystring
-                $villaId = $_GET['villa'];
-
-                // Voeg het bod toe aan de database
-                $bodQuery = "INSERT INTO biedingen (villa_id, naam, email, prijs) VALUES ($villaId, '$naam', '$email', $bedrag)";
-                $result = mysqli_query($connection, $bodQuery);
-
-                // Controleer of het bod succesvol is toegevoegd aan de database
-                if ($result) {
-                    echo "Bod succesvol geplaatst!";
-                } else {
-                    echo "Er is een fout opgetreden bij het plaatsen van het bod.";
-                }
-            } else {
-                echo "Vul alle velden in om een bod te plaatsen.";
-            }
-        }
          
         // Inclusief de detail_view.php en doorgeven van de villa, foto's en biedingen
-        require_once 'detail_view2.php';
+        require_once 'detail_view.php';
     } else {
         echo "Villa niet gevonden.";
     }
@@ -81,4 +56,10 @@ if(isset($_GET['villa'])) {
 
 // Sluit de databaseverbinding
 mysqli_close($connection);
+
+
+
 ?>
+
+
+

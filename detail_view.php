@@ -38,65 +38,40 @@
   </header>
   <main>
     <div class="container-fluid pb-5 mb-5 px-0">
-        <!-- Slideshow -->
-        <!-- <div id="slideshow" class="carousel slide" data-ride="carousel">
-          <ol class="carousel-indicators">
-            <li data-target="#slideshow"
-            data-target-to="0" class="active"></li>
-            <li data-target="#slideshow"
-            data-target-to="1"></li>
-          </ol>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-            </div>
-            <div class="carousel-item">
-            </div>
-          </div>
-      </div> -->
       <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
   <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5" aria-label="Slide 6"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="6" aria-label="Slide 7"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="7" aria-label="Slide 8"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="8" aria-label="Slide 9"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="9" aria-label="Slide 10"></button>
+  <?php
+    $length = count($fotos);
+
+    for ($i = 0; $i < $length; $i++) {
+        // Voer hier je code uit voor elke iteratie van de loop
+        $isActive = ($i === 0) ? 'active' : ''; // Controleert of het de eerste button is
+
+        ?>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<?= $i ?>" class="<?= $isActive ?>" aria-current="<?= $isActive === 'active' ? 'true' : 'false' ?>" aria-label="Slide <?= $fotos[$i]['id'] ?>">
+        </button>
+        <?php
+    }
+?>
+
   </div>
   <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="./assets/img/huis2.jpeg" class="d-block img-fluid w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="./assets/img/huis3.jpeg" class="d-block img-fluid w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="./assets/img/huis10.jpeg" class="d-block img-fluid w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="./assets/img/huis7.jpeg" class="d-block img-fluid w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="./assets/img/huis6.jpeg" class="d-block img-fluid w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="./assets/img/huis8.jpeg" class="d-block img-fluid w-100" alt="...">
-    </div>
-     <div class="carousel-item">
-      <img src="./assets/img/huis4.jpeg" class="d-block img-fluid w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="./assets/img/huis1.jpeg" class="d-block img-fluid w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="./assets/img/huis5.jpeg" class="d-block img-fluid w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="./assets/img/huis9.jpeg" class="d-block img-fluid w-100" alt="...">
-    </div>
+  <?php
+    $length = count($fotos);
+
+    for ($i = 0; $i < $length; $i++) {
+        // Voer hier je code uit voor elke iteratie van de loop
+        $isActive = ($i === 0) ? 'active' : ''; // Controleert of het de eerste foto is
+        $bestandsnaam = $fotos[$i]['naam']; // Bestandsnaam van de foto
+
+        ?>
+        <div class="carousel-item <?= $isActive ?>">
+            <img src="./assets/img/<?= $bestandsnaam ?>" class="d-block img-fluid w-100" alt="...">
+        </div>
+        <?php
+    }
+?>
+
    
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -123,7 +98,7 @@
             </div>
             
               <p class="fw-bold">Locatie </p>
-              <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d39540.920356238516!2d4.508726303261945!3d51.7274103916201!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c4252ae3662853%3A0xb69406c2bf2252a0!2s3291%20LJ%20Strijen!5e0!3m2!1sen!2snl!4v1684935045716!5m2!1sen!2snl"></iframe>
+              <iframe class="map" src="<?= $villaData['map'] ?>"></iframe>
             </div>
            
             
@@ -131,9 +106,15 @@
                 <!-- Biedingen -->
                 <h5 class="fw-bolder">Hoogste biedingen</h5>
                 <ul class="list-unstyled">
-                    <li>Steve Jobs - €1.200.000 - 01-01-2023</li>
-                    <li>Steve Jobs - €1.100.000 - 01-01-2023</li>
-                    <li>Steve Jobs - €1.000.000 - 01-01-2023</li>
+                  <?php
+                  $lengte = count($biedingen);
+
+                  for ($i=0; $i < $lengte; $i++) { 
+                    ?>
+                    <li><?= $biedingen[$i]['naam'] ?> - €<?= $biedingen[$i]['prijs'] ?> - <?= $biedingen[$i]['datum'] ?></li>
+
+                 <?php }
+                  ?>
                 </ul>
                 <div class="mt-3">
                     <h5 class="fw-bolder">Doe een bod</h5>
@@ -141,31 +122,31 @@
                         <div class="row mb-3">
                                 <label for="voornaam" class="col-sm-3 col-form-label">Voornaam</label>
                             <div class="col-sm-7">
-                                <input required type="text" class="form-control" id="voornaam">
+                                <input required type="text" class="form-control" id="voornaam" name="voornaam">
                             </div>
                         </div>
                         <div class="row mb-3">
-                                <label for="achternaam" class="col-sm-3 col-form-label">Achter</label>
+                                <label for="achternaam" class="col-sm-3 col-form-label">Achternaam</label>
                             <div class="col-sm-7">
-                                <input required type="text" class="form-control" id="achternaam">
+                                <input required type="text" class="form-control" id="achternaam" name="achternaam">
                             </div>
                         </div>
                         <div class="row mb-3">
                                 <label for="telefoonnummer" class="col-sm-3 col-form-label">Telefoonnummer</label>
                             <div class="col-sm-7">
-                                <input required type="tel" class="form-control" id="telefoonnummer">
+                                <input required type="tel" class="form-control" id="telefoonnummer" name="telefoonnummer">
                             </div>
                         </div>
                         <div class="row mb-3">
                                 <label for="email" class="col-sm-3 col-form-label">Email</label>
                             <div class="col-sm-7">
-                                <input required type="email" class="form-control" id="email">
+                                <input required type="email" class="form-control" id="email" name="email">
                             </div>
                         </div>
                         <div class="row mb-3">
                                 <label for="bod" class="col-sm-3 col-form-label">Bod</label>
                             <div class="col-sm-7">
-                                <input required type="number" class="form-control" id="bod" min="1000000">
+                                <input required type="number" class="form-control" id="bod" min="1000000" name="bod">
                             </div>
                         </div>
                         <button type="submit" class="px-3 py-2 btn btn-warning text-white rounded-2 shadow">Opslaan</button>
@@ -173,6 +154,19 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="row gx-5 justify-content-center bg-light mt-5">
+      <div class="col-md-8">
+      <ul class="list-group list-group-flush bg-light">
+  <li class="list-group-item bg-light">Energie: <?= $villaData['energie'] ?></li>
+  <li class="list-group-item bg-light">Slaapkamers: <?= $villaData['slaapkamers'] ?></li>
+  <li class="list-group-item bg-light">Badkamers: <?= $villaData['badkamers'] ?></li>
+  <li class="list-group-item bg-light">Verdiepingen: <?= $villaData['verdiepingen'] ?></li>
+  <li class="list-group-item bg-light">Oppervlakte: <?= $villaData['oppervlakte'] ?>m2</li>
+  <li class="list-group-item bg-light">Bouwjaar: <?= $villaData['bouwjaar'] ?></li>
+
+</ul>
+      </div>
     </div>
       </div>
         

@@ -19,7 +19,7 @@
   <header class="header">
     <div class="container-fluid">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+        <a href="./index.php" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
         <img src="./assets/img/logo.png" alt="" height = "110" class="">
         </a>
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
@@ -38,65 +38,40 @@
   </header>
   <main>
     <div class="container-fluid pb-5 mb-5 px-0">
-        <!-- Slideshow -->
-        <!-- <div id="slideshow" class="carousel slide" data-ride="carousel">
-          <ol class="carousel-indicators">
-            <li data-target="#slideshow"
-            data-target-to="0" class="active"></li>
-            <li data-target="#slideshow"
-            data-target-to="1"></li>
-          </ol>
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-            </div>
-            <div class="carousel-item">
-            </div>
-          </div>
-      </div> -->
       <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
   <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5" aria-label="Slide 6"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="6" aria-label="Slide 7"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="7" aria-label="Slide 8"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="8" aria-label="Slide 9"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="9" aria-label="Slide 10"></button>
+  <?php
+    $length = count($fotos);
+
+    for ($i = 0; $i < $length; $i++) {
+        // Voer hier je code uit voor elke iteratie van de loop
+        $isActive = ($i === 0) ? 'active' : ''; // Controleert of het de eerste button is
+
+        ?>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<?= $i ?>" class="<?= $isActive ?>" aria-current="<?= $isActive === 'active' ? 'true' : 'false' ?>" aria-label="Slide <?= $fotos[$i]['id'] ?>">
+        </button>
+        <?php
+    }
+?>
+
   </div>
   <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="./assets/img/huis2.1.jpeg" class="d-block img-fluid" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="./assets/img/huis2.2.jpeg" class="d-block img-fluid" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="./assets/img/huis2.3.jpeg" class="d-block img-fluid" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="./assets/img/huis2.4.jpeg" class="d-block img-fluid" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="./assets/img/huis2.5.jpeg" class="d-block img-fluid" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="./assets/img/huis2.6.jpeg" class="d-block img-fluid" alt="...">
-    </div>
-     <div class="carousel-item">
-      <img src="./assets/img/huis2.7.jpeg" class="d-block img-fluid" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="./assets/img/huis2.8.jpeg" class="d-block img-fluid" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="./assets/img/huis2.9.jpeg" class="d-block img-fluid" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="./assets/img/huis2.10.jpeg" class="d-block img-fluid" alt="...">
-    </div>
+  <?php
+    $length = count($fotos);
+
+    for ($i = 0; $i < $length; $i++) {
+        // Voer hier je code uit voor elke iteratie van de loop
+        $isActive = ($i === 0) ? 'active' : ''; // Controleert of het de eerste foto is
+        $bestandsnaam = $fotos[$i]['naam']; // Bestandsnaam van de foto
+
+        ?>
+        <div class="carousel-item <?= $isActive ?>">
+            <img src="./assets/img/<?= $bestandsnaam ?>" class="d-block img-fluid w-100" alt="...">
+        </div>
+        <?php
+    }
+?>
+
    
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -113,16 +88,17 @@
             <div class="col-md-6">
                  <!-- Informatie -->
                  <div class="pb-5">
-                 <h2>Mooie huis met vrij uitzicht en <br>
-            een grote tuin
-            </h2>
+                 <h2><?= $villaData['naam'] ?></h2>
                  </div>
+            
+            
             <div class="pb-5">
             <p class="fw-bold">Inleiding </p>
-            <p>
-Deze imposante woning, gelegen in een idyllisch Hollands landschap, biedt een comfortabele indeling met een prachtig vrij uitzicht. Met een centrale ligging en nabijheid van natuurgebieden, treinstation, snelweg en het centrum van Zaltbommel, is dit een uniek object dat ruimte, rust en vrijheid biedt.</div>
+            <p><?= $villaData['inleiding']?></p>
+            </div>
+            
               <p class="fw-bold">Locatie </p>
-              <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2466.6529277101426!2d5.2777446!3d51.812502099999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c6f3f1242ce7a9%3A0xd1a0eb4936b1c07f!2sKetelsteeg%205A%2C%205301%20KC%20Zaltbommel!5e0!3m2!1sen!2snl!4v1685104880390!5m2!1sen!2snl" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              <iframe class="map" src="<?= $villaData['map'] ?>"></iframe>
             </div>
            
             
@@ -130,9 +106,15 @@ Deze imposante woning, gelegen in een idyllisch Hollands landschap, biedt een co
                 <!-- Biedingen -->
                 <h5 class="fw-bolder">Hoogste biedingen</h5>
                 <ul class="list-unstyled">
-                    <li>Steve Jobs - €1.200.000 - 01-01-2023</li>
-                    <li>Steve Jobs - €1.100.000 - 01-01-2023</li>
-                    <li>Steve Jobs - €1.000.000 - 01-01-2023</li>
+                  <?php
+                  $lengte = count($biedingen);
+
+                  for ($i=0; $i < $lengte; $i++) { 
+                    ?>
+                    <li><?= $biedingen[$i]['naam'] ?> - €<?= $biedingen[$i]['prijs'] ?> - <?= $biedingen[$i]['datum'] ?></li>
+
+                 <?php }
+                  ?>
                 </ul>
                 <div class="mt-3">
                     <h5 class="fw-bolder">Doe een bod</h5>
@@ -172,6 +154,19 @@ Deze imposante woning, gelegen in een idyllisch Hollands landschap, biedt een co
                 </div>
             </div>
         </div>
+    </div>
+    <div class="row gx-5 justify-content-center bg-light mt-5">
+      <div class="col-md-8">
+      <ul class="list-group list-group-flush bg-light">
+  <li class="list-group-item bg-light">Energie: <?= $villaData['energie'] ?></li>
+  <li class="list-group-item bg-light">Slaapkamers: <?= $villaData['slaapkamers'] ?></li>
+  <li class="list-group-item bg-light">Badkamers: <?= $villaData['badkamers'] ?></li>
+  <li class="list-group-item bg-light">Verdiepingen: <?= $villaData['verdiepingen'] ?></li>
+  <li class="list-group-item bg-light">Oppervlakte: <?= $villaData['oppervlakte'] ?>m2</li>
+  <li class="list-group-item bg-light">Bouwjaar: <?= $villaData['bouwjaar'] ?></li>
+
+</ul>
+      </div>
     </div>
       </div>
         
