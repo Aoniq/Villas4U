@@ -28,8 +28,14 @@ if(isset($_GET['villa'])) {
 
         // Voeg de foto bestandsnamen toe aan de array
         while($row = mysqli_fetch_assoc($fotosResult)) {
-            $fotos[] = $row['bestandsnaam'];
+            $fotos[] = $row;
         }
+
+        // Haal het hoogste bod op voor de desbetreffende villa
+        $hoogsteBodQuery = "SELECT MAX(prijs) AS hoogste_bod FROM biedingen WHERE villa_id = $villaId";
+        $hoogsteBodResult = mysqli_query($connection, $hoogsteBodQuery);
+        $hoogsteBodData = mysqli_fetch_assoc($hoogsteBodResult);
+        $hoogsteBod = $hoogsteBodData['hoogste_bod'];
 
         // Haal de 5 hoogste biedingen op voor de desbetreffende villa
         $biedingenQuery = "SELECT * FROM biedingen WHERE villa_id = $villaId ORDER BY prijs DESC LIMIT 5";
@@ -42,7 +48,78 @@ if(isset($_GET['villa'])) {
         while($row = mysqli_fetch_assoc($biedingenResult)) {
             $biedingen[] = $row;
         }
+         
+        // Controleer of er een bod is geplaatst via het formulier
+        if (isset($_POST['submit'])) {
+            // Controleer of alle velden zijn ingevuld
+            if (!empty($_POST['achternaam']) && !empty($_POST['email']) && !empty($_POST['bod'])) {
+                // Ontvang de ingediende gegevens van het formulier
+                $naam = $_POST['achternaam'];
+                $email = $_POST['email'];
+                $bedrag = $_POST['bod'];
 
+                // Controleer of het nieuwe bod hoger is dan het hoogste bod
+                if ($bedrag > $hoogsteBod) {
+                    // Voeg het bod toe aan de database
+                    $bodQuery = "INSERT INTO biedingen (villa_id, naam, email, prijs) VALUES ($villaId, '$naam', '$email', $bedrag)";
+                    $result = mysqli_query($connection, $bodQuery);
+
+                    // Controleer of het bod succesvol is toegevoegd aan de database
+                    if (!$result) {   
+                        echo mysqli_error($connection);
+                    } else {
+                        ?>
+                        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+                        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+                        
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function() {
+                                // Je PHP-code die de e-mail verstuurt en de SweetAlert-melding weergeeft
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Gefeliciteerd!',
+                                    text: 'Je bod is geplaatst!'
+                                });
+                            });
+                        </script>
+                        <?php
+                    }
+                } else {
+                    ?>
+                    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+                    
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            // Je PHP-code die de e-mail verstuurt en de SweetAlert-melding weergeeft
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oeps!',
+                                text: 'Je bod is te laag!'
+                            });
+                        });
+                    </script>
+                    <?php
+                }
+            } else {
+                ?>
+                <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+                
+                <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        // Je PHP-code die de e-mail verstuurt en de SweetAlert-melding weergeeft
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oeps!',
+                            text: 'Lijkt erop dat je niet alles ingevuld hebt!'
+                        });
+                    });
+                </script>
+                <?php
+            }
+        }
+         
         // Inclusief de detail_view.php en doorgeven van de villa, foto's en biedingen
         require_once 'detail_view.php';
     } else {
