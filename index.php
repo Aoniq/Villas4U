@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if(isset($_SESSION['loggedin'])){
+  echo "<h1> WHOOOOOO JE BENT LOGGEDIN PIKKKKK</h1><br>";
+}
+
+ ?>
 <!doctype html>
 <html lang="en">
 
@@ -19,13 +27,13 @@
   <header class="header">
     <div class="container-fluid">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="javascript:void(0)" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+        <a href="./index.php" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
         <img src="./assets/img/logo.png" alt="" height = "110" class="">
         </a>
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="index.php" class="nav-link px-2 text-black fw-bold">Home</a></li>
-          <li><a href="villa's.php" class="nav-link px-2 text-black fw-bold">Villa's</a></li>
-          <li><a href="contact.php" class="nav-link px-2 text-black fw-bold">Contact</a></li>
+          <li><a href="./index.php" class="nav-link px-2 text-black fw-bold">Home</a></li>
+          <li><a href="./villas.php" class="nav-link px-2 text-black fw-bold">Villa's</a></li>
+          <li><a href="./contact.php" class="nav-link px-2 text-black fw-bold">Contact</a></li>
         </ul>
 
         <div class="text-end">
@@ -34,7 +42,7 @@
         </div>
       </div>
     </div>
- 
+
   </header>
   <main>
     <div class="container mt-5 pb-5 mb-5">
@@ -147,8 +155,8 @@
         <div class="col-1"><i class="fa-brands fa-instagram fs-1"></i></div>
         <div class="col-1"><i class="fa-brands fa-facebook fs-1"></i></div>
 </div>
-    
-    
+
+
   </footer>
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"

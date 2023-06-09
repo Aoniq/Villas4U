@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+ ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -11,6 +16,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
   <link rel="stylesheet" href="./assets/css/style.css">
   <script src="https://kit.fontawesome.com/23451d210d.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css" integrity="sha384-QYIZto+st3yW+o8+5OHfT6S482Zsvz2WfOzpFSXMF9zqeLcFV0/wlZpMtyFcZALm" crossorigin="anonymous">
 </head>
 
 <body>
@@ -19,12 +25,12 @@
     <div class="container-fluid">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         <a href="./index.php" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-          <img src="./assets/img/logo.png" alt="" height="110" class="">
+        <img src="./assets/img/logo.png" alt="" height = "110" class="">
         </a>
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="index.php" class="nav-link px-2 text-black fw-bold">Home</a></li>
-          <li><a href="villa's.php" class="nav-link px-2 text-black fw-bold">Villa's</a></li>
-          <li><a href="contact.php" class="nav-link px-2 text-black fw-bold">Contact</a></li>
+          <li><a href="./index.php" class="nav-link px-2 text-black fw-bold">Home</a></li>
+          <li><a href="./villas.php" class="nav-link px-2 text-black fw-bold">Villa's</a></li>
+          <li><a href="./contact.php" class="nav-link px-2 text-black fw-bold">Contact</a></li>
         </ul>
 
         <div class="text-end">
@@ -110,47 +116,74 @@
 
               for ($i = 0; $i < $lengte; $i++) {
               ?>
-                <li><?= $biedingen[$i]['naam'] ?> - €<?= $biedingen[$i]['prijs'] ?> - <?= $biedingen[$i]['datum'] ?></li>
+
+                <li><span <?php if(!isset($_SESSION['loggedin'])){echo "class = 'blur'";}?>><?= $biedingen[$i]['naam'] ?></span> - €<?= $biedingen[$i]['prijs'] ?> - <?= $biedingen[$i]['datum'] ?> <?php
+                if($biedingen[$i]['email'] == $_SESSION['email']){
+                  //Dit is zn eigen bod
+                  ?>
+                  <a style="color: black!important;" href ="bod-del.php?m=<?=$biedingen[$i]['email']?>&id=<?=$biedingen[$i]['id']?>"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                  <?php
+                }
+              ?></li>
 
               <?php }
               ?>
             </ul>
             <div class="mt-3">
               <h5 class="fw-bolder">Doe een bod</h5>
-              <form action="detail.php?villa=<?php echo $villaId; ?>" method="POST">
-                <div class="row mb-3">
-                  <label for="voornaam" class="col-sm-3 col-form-label">Voornaam</label>
-                  <div class="col-sm-7">
-                    <input required type="text" class="form-control" id="voornaam" name="voornaam">
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  <label for="achternaam" class="col-sm-3 col-form-label">Achternaam</label>
-                  <div class="col-sm-7">
-                    <input required type="text" class="form-control" id="achternaam" name="achternaam">
-                  </div>
-                </div>
 
-                <div class="row mb-3">
-                  <label for="telefoonnummer" class="col-sm-3 col-form-label">Telefoonnummer</label>
-                  <div class="col-sm-7">
-                    <input required type="tel" class="form-control" id="telefoonnummer" name="telefoonnummer">
+              <?php
+              if(isset($_SESSION['loggedin'])){
+              for ($i = 0; $i < 1; $i++) {
+              ?>
+                <p> <strong style="color: red;">Let op:</strong> bod moet hoger zijn dan <?=$biedingen[$i]['prijs']?></p>
+
+              <?php }
+
+
+                ?>
+                <form action="detail.php?villa=<?php echo $villaId; ?>" method="POST">
+                  <div class="row mb-3">
+                    <label for="voornaam" class="col-sm-3 col-form-label">Voornaam</label>
+                    <div class="col-sm-7">
+                      <input required type="text" class="form-control" id="voornaam" name="voornaam" value="<?=$_SESSION['voornaam']?>" readonly>
+                    </div>
                   </div>
-                </div>
-                <div class="row mb-3">
-                  <label for="email" class="col-sm-3 col-form-label">Email</label>
-                  <div class="col-sm-7">
-                    <input required type="email" class="form-control" id="email" name="email">
+                  <div class="row mb-3">
+                    <label for="achternaam" class="col-sm-3 col-form-label">Achternaam</label>
+                    <div class="col-sm-7">
+                      <input required type="text" class="form-control" id="achternaam" name="achternaam" value="<?=$_SESSION['achternaam']?>" readonly>
+                    </div>
                   </div>
-                </div>
-                <div class="row mb-3">
-                  <label for="bod" class="col-sm-3 col-form-label">Bod</label>
-                  <div class="col-sm-7">
-                    <input required type="number" class="form-control" id="bod" min="1000000" name="bod">
+
+                  <div class="row mb-3">
+                    <label for="telefoonnummer" class="col-sm-3 col-form-label">Telefoonnummer</label>
+                    <div class="col-sm-7">
+                      <input required type="tel" class="form-control" id="telefoonnummer" name="telefoonnummer" value="<?=$_SESSION['telefoon']?>">
+                    </div>
                   </div>
-                </div>
-                <button type="submit" name="submit" class="px-3 py-2 btn btn-warning text-white rounded-2 shadow">Opslaan</button>
-              </form>
+                  <div class="row mb-3">
+                    <label for="email" class="col-sm-3 col-form-label">Email</label>
+                    <div class="col-sm-7">
+                      <input required type="email" class="form-control" id="email" name="email" value="<?=$_SESSION['email']?>">
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="bod" class="col-sm-3 col-form-label">Bod</label>
+                    <div class="col-sm-7">
+                      <input required type="number" class="form-control" id="bod" min="1000000" name="bod">
+                    </div>
+                  </div>
+                  <button type="submit" name="submit" class="px-3 py-2 btn btn-warning text-white rounded-2 shadow">Opslaan</button>
+                </form>
+                <?php
+              }else{
+                ?>
+              <p>U dient ingelogd te zijn voordat u kunt bieden</p>
+              <?php
+              }
+              ?>
+
             </div>
           </div>
         </div>

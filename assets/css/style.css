@@ -43,3 +43,8 @@ p.thick {
 img.carousel-item {
     object-position: bottom center;
 }
+
+.blur {
+    color: transparent;
+    text-shadow: 0 0 8px #000;
+  }
