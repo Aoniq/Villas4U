@@ -1,3 +1,7 @@
+<?php
+session_start();
+
+ ?>
 <!doctype html>
 <html lang="en">
 
@@ -29,9 +33,17 @@
         </ul>
 
         <div class="text-end">
-          <button type="button" class= "px-4 py-2 btn btn-outline-warning text-bright border-warning border-5 rounded-4 shadow">Login</button>
-          <button type="button" class="px-4 py-2 btn btn-warning text-white rounded-4 shadow">Registeren</button>
-        </div>
+        <?php
+          if(!isset($_SESSION['loggedin'])){
+            ?>
+                      <a href="login.php" class="px-4 py-2 btn btn-outline-warning text-bright border-warning border-5 rounded-4 shadow">Login</a>
+          <a href="register.php" class="px-4 py-2 btn btn-warning text-white rounded-4 shadow">Registeren</a>
+<?php
+          } else {
+            ?>
+         <a href="logout.php" class="px-4 py-2 btn btn-outline-warning text-bright border-warning border-5 rounded-4 shadow">Log uit</a> 
+         <?php }
+          ?>        </div>
       </div>
     </div>
  
@@ -41,22 +53,32 @@
 
   <div class="mt-5 mb-5 pb-5 container">
     <div class="row gy-5">
-        <div class="col-md-12">
+      <?php
+      foreach ($rows as $villa) {
+        $featureQuery = "SELECT * FROM features WHERE villa_id = ?";
+    $featureStmt = $connection->prepare($featureQuery);
+    $featureStmt->bind_param("i", $villa['id']);
+    $featureStmt->execute();
+    $featureResult = $featureStmt->get_result();
+        ?>
+<div class="col-md-12">
             <div class="card p-0 shadow">
                 <div class="bg-color">
                     <div class="card-body d-flex align-items-center">
                       <div class="row">
                         <div class="col-4">
-                        <img src="./assets/img/huis8.jpeg" alt="" class="card-img-top">
+                        <img src="./assets/img/<?= $villa['header_banner'] ?>" alt="" class="card-img-top">
                         </div>
                         <div class="col-8">
                         <div class="text-start ms-5 mt-3">
-                          <h1 class=" solid" >Rotterdam</h1>
-                        <ul class="list-unstyled ms-5 info-list">
-                            <li class="fs-4 fw-semibold"><i class="fa-solid fa-check"></i> 4990m² Perceel</li>
-                            <li class="fs-4 fw-semibold"><i class="fa-solid fa-check"></i> 312m² Woonruimte</li>
-                            <li class="fs-4 fw-semibold"><i class="fa-solid fa-check"></i> 5 Slaapkamers</li>
-                            <li class="fs-4 fw-semibold"><i class="fa-solid fa-check"></i> 3 Badkamers</li>
+                          <h1 class=" solid" ><?= $villa['naam'] ?></h1>
+                          <ul class="list-unstyled ms-5 info-list">
+                          <?php 
+                          foreach ($featureResult as $feature) {
+                            ?>
+                            <li class="fs-4 fw-semibold"><i class="fa-solid fa-check"></i> <?= $feature['feature'] ?></li>
+                         <?php }
+                          ?>                        
                         </ul>
                         </div>
                         </div>
@@ -64,172 +86,12 @@
                         
                     </div>
                 </div>
-                <a href="./detail.php?villa=1" class="btn btn-warning w-100">Bekijk meer</a>
+                <a href="./detail.php?villa=<?= $villa['id'] ?>" class="btn btn-warning w-100">Bekijk meer</a>
             </div>
         </div>
-
-        <div class="col-md-12">
-            <div class="card p-0 shadow">
-                <div class="bg-color">
-                    <div class="card-body d-flex align-items-center">
-                      <div class="row">
-                        <div class="col-4">
-                        <img src="./assets/img/huis8.jpeg" alt="" class="card-img-top">
-                        </div>
-                        <div class="col-8">
-                        <div class="text-start ms-5 mt-3">
-                          <h1 class=" solid" >Rotterdam</h1>
-                        <ul class="list-unstyled ms-5 info-list">
-                            <li class="fs-4 fw-semibold"><i class="fa-solid fa-check"></i> 4990m² Perceel</li>
-                            <li class="fs-4 fw-semibold"><i class="fa-solid fa-check"></i> 312m² Woonruimte</li>
-                            <li class="fs-4 fw-semibold"><i class="fa-solid fa-check"></i> 5 Slaapkamers</li>
-                            <li class="fs-4 fw-semibold"><i class="fa-solid fa-check"></i> 3 Badkamers</li>
-                        </ul>
-                        </div>
-                        </div>
-                      </div>
-                        
-                    </div>
-                </div>
-                <a href="./detail.php?villa=1" class="btn btn-warning w-100">Bekijk meer</a>
-            </div>
-        </div>
-
-        <div class="col-md-12">
-            <div class="card p-0 shadow">
-                <div class="bg-color">
-                    <div class="card-body d-flex align-items-center">
-                      <div class="row">
-                        <div class="col-4">
-                        <img src="./assets/img/huis8.jpeg" alt="" class="card-img-top">
-                        </div>
-                        <div class="col-8">
-                        <div class="text-start ms-5 mt-3">
-                          <h1 class=" solid" >Rotterdam</h1>
-                        <ul class="list-unstyled ms-5 info-list">
-                            <li class="fs-4 fw-semibold"><i class="fa-solid fa-check"></i> 4990m² Perceel</li>
-                            <li class="fs-4 fw-semibold"><i class="fa-solid fa-check"></i> 312m² Woonruimte</li>
-                            <li class="fs-4 fw-semibold"><i class="fa-solid fa-check"></i> 5 Slaapkamers</li>
-                            <li class="fs-4 fw-semibold"><i class="fa-solid fa-check"></i> 3 Badkamers</li>
-                        </ul>
-                        </div>
-                        </div>
-                      </div>
-                        
-                    </div>
-                </div>
-                <a href="./detail.php?villa=1" class="btn btn-warning w-100">Bekijk meer</a>
-            </div>
-        </div>
-
-        <div class="col-md-12">
-            <div class="card p-0 shadow">
-                <div class="bg-color">
-                    <div class="card-body d-flex align-items-center">
-                      <div class="row">
-                        <div class="col-4">
-                        <img src="./assets/img/huis8.jpeg" alt="" class="card-img-top">
-                        </div>
-                        <div class="col-8">
-                        <div class="text-start ms-5 mt-3">
-                          <h1 class=" solid" >Rotterdam</h1>
-                        <ul class="list-unstyled ms-5 info-list">
-                            <li class="fs-4 fw-semibold"><i class="fa-solid fa-check"></i> 4990m² Perceel</li>
-                            <li class="fs-4 fw-semibold"><i class="fa-solid fa-check"></i> 312m² Woonruimte</li>
-                            <li class="fs-4 fw-semibold"><i class="fa-solid fa-check"></i> 5 Slaapkamers</li>
-                            <li class="fs-4 fw-semibold"><i class="fa-solid fa-check"></i> 3 Badkamers</li>
-                        </ul>
-                        </div>
-                        </div>
-                      </div>
-                        
-                    </div>
-                </div>
-                <a href="./detail.php?villa=1" class="btn btn-warning w-100">Bekijk meer</a>
-            </div>
-        </div>
-
-        <div class="col-md-12">
-            <div class="card p-0 shadow">
-                <div class="bg-color">
-                    <div class="card-body d-flex align-items-center">
-                      <div class="row">
-                        <div class="col-4">
-                        <img src="./assets/img/huis8.jpeg" alt="" class="card-img-top">
-                        </div>
-                        <div class="col-8">
-                        <div class="text-start ms-5 mt-3">
-                          <h1 class=" solid" >Rotterdam</h1>
-                        <ul class="list-unstyled ms-5 info-list">
-                            <li class="fs-4 fw-semibold"><i class="fa-solid fa-check"></i> 4990m² Perceel</li>
-                            <li class="fs-4 fw-semibold"><i class="fa-solid fa-check"></i> 312m² Woonruimte</li>
-                            <li class="fs-4 fw-semibold"><i class="fa-solid fa-check"></i> 5 Slaapkamers</li>
-                            <li class="fs-4 fw-semibold"><i class="fa-solid fa-check"></i> 3 Badkamers</li>
-                        </ul>
-                        </div>
-                        </div>
-                      </div>
-                        
-                    </div>
-                </div>
-                <a href="./detail.php?villa=1" class="btn btn-warning w-100">Bekijk meer</a>
-            </div>
-        </div>
-
-        <div class="col-md-12">
-            <div class="card p-0 shadow">
-                <div class="bg-color">
-                    <div class="card-body d-flex align-items-center">
-                      <div class="row">
-                        <div class="col-4">
-                        <img src="./assets/img/huis8.jpeg" alt="" class="card-img-top">
-                        </div>
-                        <div class="col-8">
-                        <div class="text-start ms-5 mt-3">
-                          <h1 class=" solid" >Rotterdam</h1>
-                        <ul class="list-unstyled ms-5 info-list">
-                            <li class="fs-4 fw-semibold"><i class="fa-solid fa-check"></i> 4990m² Perceel</li>
-                            <li class="fs-4 fw-semibold"><i class="fa-solid fa-check"></i> 312m² Woonruimte</li>
-                            <li class="fs-4 fw-semibold"><i class="fa-solid fa-check"></i> 5 Slaapkamers</li>
-                            <li class="fs-4 fw-semibold"><i class="fa-solid fa-check"></i> 3 Badkamers</li>
-                        </ul>
-                        </div>
-                        </div>
-                      </div>
-                        
-                    </div>
-                </div>
-                <a href="./detail.php?villa=1" class="btn btn-warning w-100">Bekijk meer</a>
-            </div>
-        </div>
-
-        <div class="col-md-12">
-            <div class="card p-0 shadow">
-                <div class="bg-color">
-                    <div class="card-body d-flex align-items-center">
-                      <div class="row">
-                        <div class="col-4">
-                        <img src="./assets/img/huis8.jpeg" alt="" class="card-img-top">
-                        </div>
-                        <div class="col-8">
-                        <div class="text-start ms-5 mt-3">
-                          <h1 class=" solid" >Rotterdam</h1>
-                        <ul class="list-unstyled ms-5 info-list">
-                            <li class="fs-4 fw-semibold"><i class="fa-solid fa-check"></i> 4990m² Perceel</li>
-                            <li class="fs-4 fw-semibold"><i class="fa-solid fa-check"></i> 312m² Woonruimte</li>
-                            <li class="fs-4 fw-semibold"><i class="fa-solid fa-check"></i> 5 Slaapkamers</li>
-                            <li class="fs-4 fw-semibold"><i class="fa-solid fa-check"></i> 3 Badkamers</li>
-                        </ul>
-                        </div>
-                        </div>
-                      </div>
-                        
-                    </div>
-                </div>
-                <a href="./detail.php?villa=1" class="btn btn-warning w-100">Bekijk meer</a>
-            </div>
-        </div>
-    </div>
+     <?php }
+      ?>
+</div>
 </div>
 
   </main>

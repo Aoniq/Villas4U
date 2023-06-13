@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!isset($_SESSION['email'])){
+  $_SESSION['email'] = NULL;
+}
+ ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -34,8 +41,12 @@
                       <a href="login.php" class="px-4 py-2 btn btn-outline-warning text-bright border-warning border-5 rounded-4 shadow">Login</a>
           <a href="register.php" class="px-4 py-2 btn btn-warning text-white rounded-4 shadow">Registeren</a>
 <?php
-          }
-          ?>        </div>
+          } else {
+            ?>
+         <a href="logout.php" class="px-4 py-2 btn btn-outline-warning text-bright border-warning border-5 rounded-4 shadow">Log uit</a> 
+         <?php }
+          ?>
+          </div>
       </div>
     </div>
 

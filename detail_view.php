@@ -42,8 +42,12 @@ if(!isset($_SESSION['email'])){
                       <a href="login.php" class="px-4 py-2 btn btn-outline-warning text-bright border-warning border-5 rounded-4 shadow">Login</a>
           <a href="register.php" class="px-4 py-2 btn btn-warning text-white rounded-4 shadow">Registeren</a>
 <?php
-          }
-          ?>        </div>
+          } else {
+            ?>
+         <a href="logout.php" class="px-4 py-2 btn btn-outline-warning text-bright border-warning border-5 rounded-4 shadow">Log uit</a> 
+         <?php }
+          ?>
+          </div>
       </div>
     </div>
 
@@ -120,21 +124,25 @@ if(!isset($_SESSION['email'])){
             <ul class="list-unstyled">
               <?php
               $lengte = count($biedingen);
-
-              for ($i = 0; $i < $lengte; $i++) {
-              ?>
-
-                <li><span <?php if(!isset($_SESSION['loggedin']))?>><?= $biedingen[$i]['naam'] ?></span> - €<?= $biedingen[$i]['prijs'] ?> - <?= $biedingen[$i]['datum'] ?> <?php
-                if($biedingen[$i]['email'] == $_SESSION['email']){
-                  //Dit is zn eigen bod
+              if ($lengte >= 1) {
+                for ($i = 0; $i < $lengte; $i++) {
                   ?>
-                  <a style="color: black!important;" href ="bod-del.php?m=<?=$biedingen[$i]['email']?>&id=<?=$biedingen[$i]['id']?>"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                  <?php
-                }
-              ?></li>
+    
+                    <li><span <?php if(!isset($_SESSION['loggedin']))?>><?= $biedingen[$i]['naam'] ?></span> - €<?= $biedingen[$i]['prijs'] ?> - <?= $biedingen[$i]['datum'] ?> <?php
+                    if($biedingen[$i]['email'] == $_SESSION['email']){
+                      //Dit is zn eigen bod
+                      ?>
+                      <a style="color: black!important;" href ="bod-del.php?m=<?=$biedingen[$i]['email']?>&id=<?=$biedingen[$i]['id']?>"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                      <?php
+                    }
+                  ?></li>
+    
+                  <?php }
+                  }
+                  ?>  
+              
 
-              <?php }
-              ?>
+              
             </ul>
             <div class="mt-3">
               <h5 class="fw-bolder">Doe een bod</h5>
@@ -142,6 +150,13 @@ if(!isset($_SESSION['email'])){
               <?php
               if(isset($_SESSION['loggedin'])){
               for ($i = 0; $i < 1; $i++) {
+                if ($lengte >= 1) {
+                if ($biedingen[$i]['prijs'] == null) {
+                  $biedingen[$i]['prijs'] = 1000000;
+                }
+              } else {
+                $biedingen[$i]['prijs'] = 1000000;
+              }
               ?>
                 <p> <strong style="color: red;">Let op:</strong> bod moet hoger zijn dan <?=$biedingen[$i]['prijs']?></p>
 

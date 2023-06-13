@@ -72,27 +72,27 @@ header("location: index.php");
     </div>
 
   </header>
-    <div class="container mt-5 py-5">
-       
+  <div class="container mt-5 py-5 bg-light rounded-3">
+        <div class="text-center mb-4">
+            <h2 class="fw-bold">Login</h2>
+        </div>
         <div class="w-75 mx-auto mt-3">
-            <h5 class="fw-bolder">Login</h5>
-            <form method="post" action="contact.php" class="w-75 mx-auto">
-                <div class="row mb-3">
-                    <label for="gebruikersnaam" class="col-sm-3 col-form-label">Gebruikersnaam <i class="text-danger fw-bold fs-5">*</i></label>
-                    <div class="col-sm-7">
-                        <input type="text" class="form-control" id="gebruikersnaam" name="gebruikersnaam">
-                    </div>
-                </div>
+            <form method="post" action="login.php" class="w-75 mx-auto">
                 <div class="row mb-3">
                     <label for="email" class="col-sm-3 col-form-label">Email <i class="text-danger fw-bold fs-5">*</i></label>
                     <div class="col-sm-7">
-                        <input type="email" class="form-control" id="email" name="email">
-                        <div id="passwordHelpBlock" class="form-text"></div>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="wachtwoord" class="col-sm-3 col-form-label">Wachtwoord <i class="text-danger fw-bold fs-5">*</i></label>
+                    <div class="col-sm-7">
+                        <input type="password" class="form-control" id="wachtwoord" name="wachtwoord" required>
                     </div>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-sm-7">
-                        <button type="submit" name="submit" class="px-3 py-2 btn btn-warning text-white rounded-2 shadow">Opslaan</button>
+                        <button type="submit" name="submit" class="px-3 py-2 btn btn-warning text-white rounded-2 shadow">Login</button>
                     </div>
                 </div>
             </form>

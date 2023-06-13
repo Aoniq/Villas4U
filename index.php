@@ -40,7 +40,10 @@ session_start();
                       <a href="login.php" class="px-4 py-2 btn btn-outline-warning text-bright border-warning border-5 rounded-4 shadow">Login</a>
           <a href="register.php" class="px-4 py-2 btn btn-warning text-white rounded-4 shadow">Registeren</a>
 <?php
-          }
+          } else {
+            ?>
+         <a href="logout.php" class="px-4 py-2 btn btn-outline-warning text-bright border-warning border-5 rounded-4 shadow">Log uit</a> 
+         <?php }
           ?>
 
           <!-- <button type="button" class="px-4 py-2 btn btn-warning text-white rounded-4 shadow">Registeren</button> -->
@@ -61,7 +64,7 @@ session_start();
                     <img src="./assets/img/huis8.jpeg" alt="" class="card-img-top">
                     <div class="card-body">
                         <ul class="list-unstyled">
-                            <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> 4990m² Perceel</li>
+                            <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> 4990m² Oppervlakte</li>
                             <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> 312m² Woonruimte</li>
                             <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> 5 Slaapkamers</li>
                             <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> 3 Badkamers</li>
@@ -72,28 +75,30 @@ session_start();
             </div>
             <div class="col-md-4">
                 <div class="card p-0 shadow">
-                    <img src="./assets/img/villa2-banner.png" alt="" class="card-img-top">
+                    <img src="./assets/img/huis2.1.jpeg" alt="" class="card-img-top">
                     <div class="card-body">
                         <ul class="list-unstyled">
-                            <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> 100m² Achtertuin</li>
-                            <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> 5 Slaapkamers</li>
-                            <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> Binnen garage</li>
+                            <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> 9600m² Oppervlakte</li>
+                            <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> 4 Slaapkamers</li>
+                            <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> 2 Badkamers</li>
+                            <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> In 1974 gebouwd</li>
                         </ul>
                     </div>
-                    <a href="#" class="btn btn-warning w-100">Bekijk meer</a>
+                    <a href="./detail.php?villa=2" class="btn btn-warning w-100">Bekijk meer</a>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card p-0 shadow">
-                    <img src="./assets/img/villa3-banner.png" alt="" class="card-img-top">
+                    <img src="./assets/img/huis3.5.jpeg" alt="" class="card-img-top">
                     <div class="card-body">
                         <ul class="list-unstyled">
-                            <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> 100m² Achtertuin</li>
+                            <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> 7450m² Oppervlakte</li>
                             <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> 5 Slaapkamers</li>
-                            <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> Binnen garage</li>
+                            <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> 2 Badkamers</li>
+                            <li class="fs-5 fw-semibold"><i class="fa-solid fa-check"></i> 3 Verdiepingen</li>
                         </ul>
                     </div>
-                    <a href="#" class="btn btn-warning w-100">Bekijk meer</a>
+                    <a href="./detail.php?villa=3" class="btn btn-warning w-100">Bekijk meer</a>
                 </div>
             </div>
             <div class="col-md-4">
