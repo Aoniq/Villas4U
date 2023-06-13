@@ -37,6 +37,10 @@ if(isset($_GET['villa'])) {
         $hoogsteBodData = mysqli_fetch_assoc($hoogsteBodResult);
         $hoogsteBod = $hoogsteBodData['hoogste_bod'];
 
+        if (empty($hoogsteBod)) {
+            $hoogsteBod = 1000000;
+        }                
+
         // Haal de 5 hoogste biedingen op voor de desbetreffende villa
         $biedingenQuery = "SELECT * FROM biedingen WHERE villa_id = $villaId ORDER BY prijs DESC LIMIT 5";
         $biedingenResult = mysqli_query($connection, $biedingenQuery);
