@@ -18,11 +18,36 @@ $telefoonnummer        = $_POST['telefoonnummer'];
 $prehashpass     = $_POST['wachtwoord'];
 $wachtwoord      = md5($_POST['wachtwoord']);
 
-$stmt = $connection -> prepare('INSERT INTO users (voornaam, achternaam, email, telefoonnummer, password) VALUES (?,?,?,?,?)');
-$stmt -> bind_param('sssss', $voornaam, $achternaam, $email,  $telefoonnummer, $wachtwoord);
-$stmt -> execute();
+// Controleer of de e-mail al in gebruik is
+$stmt = $connection->prepare('SELECT * FROM users WHERE email = ?');
+$stmt->bind_param('s', $email);
+$stmt->execute();
+$result = $stmt->get_result();
 
-$subject = 'Account aangemaakt op jeffrey.010devs.nl/villas4u';
+if ($result->num_rows > 0) {
+    // E-mail is al in gebruik, geef een melding
+    ?>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+                    
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            // Je PHP-code die de e-mail verstuurt en de SweetAlert-melding weergeeft
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oeps!',
+                                text: 'De opgegeven e-mail is al in gebruik. Kies een andere e-mailadres.'
+                            });
+                        });
+                    </script>
+    <?php
+} else {
+    // Voer de insert-query uit als de e-mail niet in gebruik is
+    $stmt = $connection->prepare('INSERT INTO users (voornaam, achternaam, email, telefoonnummer, password) VALUES (?,?,?,?,?)');
+    $stmt->bind_param('sssss', $voornaam, $achternaam, $email, $telefoonnummer, $wachtwoord);
+    $stmt->execute();
+
+    $subject = 'Account aangemaakt op jeffrey.010devs.nl/villas4u';
       $message = '
 <html>
 <head>
@@ -51,6 +76,7 @@ Wachtwoord: '.$prehashpass.'</p>
       mail($email, $subject, $message, implode("\r\n", $headers));
 
       header('location: login.php');
+}
 }else{
 }
  ?>
@@ -147,7 +173,7 @@ Wachtwoord: '.$prehashpass.'</p>
         </div>
     </div>
 
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-4 footer">
+    <footer class="fixed-bottom d-flex flex-wrap justify-content-between align-items-center py-3 mt-4 footer">
   <ul class="nav col-md-4 justify-content-start">
       <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Mobile App</a></li>
       <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Community</a></li>
